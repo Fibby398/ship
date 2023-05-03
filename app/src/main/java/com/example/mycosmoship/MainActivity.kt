@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 const val CELL_SIZE = 50
-const val VERTICAL_CELL_AMOUNT = 38
-const val HORIZONTAL_CELL_AMOUNT = 25
+const val VERTICAL_CELL_AMOUNT = 23
+const val HORIZONTAL_CELL_AMOUNT = 13
 const val VERTICAL_MAX_SIZE = CELL_SIZE * VERTICAL_CELL_AMOUNT
 const val HORIZONTAL_MAX_SIZE = CELL_SIZE * HORIZONTAL_CELL_AMOUNT
 
