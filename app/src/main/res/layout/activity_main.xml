@@ -36,32 +36,32 @@
 
         <ImageView
             android:id="@+id/editor_clear"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/material"
+            android:layout_height="@dimen/material"
             android:layout_margin="8dp"
             android:src="@drawable/ic_baseline_clear_24">
 
         </ImageView>
         <ImageView
             android:id="@+id/editor_brick"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/material"
+            android:layout_height="@dimen/material"
             android:layout_margin="8dp"
             android:src="@drawable/brick">
 
         </ImageView>
         <ImageView
             android:id="@+id/editor_concrete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/material"
+            android:layout_height="@dimen/material"
             android:layout_margin="8dp"
             android:src="@drawable/concrete">
 
         </ImageView>
         <ImageView
             android:id="@+id/editor_grass"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/material"
+            android:layout_height="@dimen/material"
             android:layout_margin="8dp"
             android:src="@drawable/grass">
 
