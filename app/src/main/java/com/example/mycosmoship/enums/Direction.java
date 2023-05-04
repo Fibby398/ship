@@ -1,4 +1,4 @@
-package com.example.mycosmoship;
+package com.example.mycosmoship.enums;
 
 public enum Direction {
     UP,

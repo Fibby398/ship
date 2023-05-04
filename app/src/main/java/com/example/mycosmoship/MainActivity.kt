@@ -1,5 +1,6 @@
 package com.example.mycosmoship
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
@@ -9,7 +10,11 @@ import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
-import androidx.recyclerview.widget.ItemTouchHelper.UP
+import com.example.mycosmoship.drawers.ElementDrawer
+import com.example.mycosmoship.drawers.GridDrawer
+import com.example.mycosmoship.enums.Direction
+import com.example.mycosmoship.enums.Material
+import com.example.mycosmoship.models.Coordinate
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -25,12 +30,26 @@ class MainActivity : AppCompatActivity() {
     private var editMode = false
 
     private val gridDrawer by lazy {
-        GridDrawer(this)
+        GridDrawer(container)
     }
+
+    private val elementDrawer by lazy {
+        ElementDrawer(container)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         container.layoutParams = FrameLayout.LayoutParams(VERTICAL_MAX_SIZE, HORIZONTAL_MAX_SIZE)
+        editor_clear.setOnClickListener{ elementDrawer.currentMaterial = Material.EMPTY}
+        editor_brick.setOnClickListener{ elementDrawer.currentMaterial = Material.BRICK}
+        editor_concrete.setOnClickListener{ elementDrawer.currentMaterial = Material.CONCRETE}
+        editor_grass.setOnClickListener{ elementDrawer.currentMaterial = Material.GRASS}
+        container.setOnTouchListener { _, event ->
+            elementDrawer.onTouchContainer(event.x, event.y)
+            return@setOnTouchListener true
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
