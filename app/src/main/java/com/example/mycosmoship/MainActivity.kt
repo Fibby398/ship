@@ -6,19 +6,24 @@ import android.view.KeyEvent
 import android.view.KeyEvent.*
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.ItemTouchHelper.UP
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 const val CELL_SIZE = 50
-const val VERTICAL_CELL_AMOUNT = 23
+const val VERTICAL_CELL_AMOUNT = 24
 const val HORIZONTAL_CELL_AMOUNT = 13
 const val VERTICAL_MAX_SIZE = CELL_SIZE * VERTICAL_CELL_AMOUNT
 const val HORIZONTAL_MAX_SIZE = CELL_SIZE * HORIZONTAL_CELL_AMOUNT
 
 
 class MainActivity : AppCompatActivity() {
+
+    private var editMode = false
+
     private val gridDrawer by lazy {
         GridDrawer(this)
     }
@@ -36,11 +41,22 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menu_settings -> {
-                gridDrawer.drawGrid()
+                switchEditMode()
                 return true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun switchEditMode(){
+        if (editMode){
+            gridDrawer.removeGrid()
+            material_container.visibility = GONE
+        }else{
+            gridDrawer.drawGrid()
+            material_container.visibility = VISIBLE
+        }
+        editMode = !editMode
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
